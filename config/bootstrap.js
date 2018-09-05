@@ -12,9 +12,9 @@
 module.exports.bootstrap = function(cb) {
  
      
-        MSQueue.subscriber_topic('queue_command',(message)=>{
-           console.log(message);
-        });
+        // MSQueue.subscriber_topic('queue_command',(message)=>{
+        //    console.log(message);
+        // });
      
       //   MessageQueue.subtest('ex_Authorize','queue_Authorize',function(message){
       //     console.log(message);
