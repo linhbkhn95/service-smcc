@@ -166,7 +166,7 @@ module.exports = {
 		return new Promise(function (resolve, reject) {
 			try {
 				var headers = {
-					'Authorization':'*Bearer* '+ access_token
+					'Authorization':'Bearer '+ access_token
 				};
 				request({
 					url: url,
