@@ -165,11 +165,14 @@ module.exports = {
 		var infoLog = TAG_CLASS + '.callGet: url:' + url;
 		return new Promise(function (resolve, reject) {
 			try {
-				request.get(url, {
-					'auth': {
-					  'bearer': access_token
-					}
-				  }, function (err, res) {
+				var headers = {
+					'Authorization':'Bearer '+ access_token
+				};
+				request({
+					url: url,
+					headers,
+					
+				}, function (err, res) {
 					if (err) {
 						sails.log.error(LogHelper.Add(infoLog, 'error'), err);
 						reject(err)
