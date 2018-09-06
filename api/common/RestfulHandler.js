@@ -168,11 +168,11 @@ module.exports = {
 				var headers = {
 					'Authorization':'Bearer '+ access_token
 				};
-				request({
-					url: url,
-					headers,
-					
-				}, function (err, res) {
+				request.get(url, {
+					'auth': {
+					  'bearer': access_token
+					}
+				  }, function (err, res) {
 					if (err) {
 						sails.log.error(LogHelper.Add(infoLog, 'error'), err);
 						reject(err)
