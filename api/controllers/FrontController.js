@@ -47,7 +47,8 @@ module.exports = {
 		// if (rs.EC) {
 		// 	rs.EM = await ErrDefs.findErr(rs.EC, rs.EM);
 		// }
-		console.log(rs)
+		
+		console.log('postRequest',res)
 		return res.send(req.body);
 	},
 	get:function(req,res){
