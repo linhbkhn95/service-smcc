@@ -160,17 +160,16 @@ module.exports = {
 		});
 
 	},
-	get: function callGet(url) {
+	get: function callGet(url,access_token) {
 		sails.log.info(LogHelper.Add(TAG_CLASS, 'callGet', 'start'));
 		var infoLog = TAG_CLASS + '.callGet: url:' + url;
 		return new Promise(function (resolve, reject) {
 			try {
-				request({
-					url: url,
-					method: 'GET',
-					// gzip: !(sails.config.DISABLE_GZIP_BPS || false),
-					// timeout: sails.config.TIMEOUT_BPS || (5 * 60 * 1000),
-				}, function (err, res) {
+				request.get(url, {
+					'auth': {
+					  'bearer': access_token
+					}
+				  }, function (err, res) {
 					if (err) {
 						sails.log.error(LogHelper.Add(infoLog, 'error'), err);
 						reject(err)

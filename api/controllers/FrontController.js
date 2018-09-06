@@ -21,9 +21,9 @@ var fs = require('fs');
 
 
 
-async function callBPS(action, body) {
+async function callPostAPI(action, body) {
 	try {
-		sails.log.info("FrontController.callBPS start", body);
+		sails.log.info("FrontController.callPostAPI start", body);
 		var result = await Restfulhandler.post(sails.config.bpsUrl + action, body);
 		if (typeof result === 'error') {
 			sails.log.error(LogHelper.Add('error'), result);
@@ -36,24 +36,44 @@ async function callBPS(action, body) {
 		return Ioutput.jsonAPIOutput(-101338, 'He thong tam thoi gian doan', err);
 	}
 }
- 
+async function callGetAPI (action,access_token) {
+	try {
+		sails.log.info("FrontController.callGetAPI start",action,access_token);
+		var result = await Restfulhandler.get(sails.config.bpsUrl + action, access_token);
+		if (typeof result === 'error') {
+			sails.log.error(LogHelper.Add('error'), result);
+			return Ioutput.jsonAPIOutput(-1, 'He thong tam thoi gian doan', result);
+		}
+		return result;
+
+	} catch (err) {
+		sails.log.error(LogHelper.Add('error'), err);
+		return Ioutput.jsonAPIOutput(-101338, 'He thong tam thoi gian doan', err);
+	}
+}
 
 
 module.exports = {
 	postRequest: async function (req, res) {
 		var body = req.body;
 		var {action,data} = req.body;
-		console.log('postRequest',req.body)
+		sails.log.info("FrontController.postRequest start",re.body);
 
-		var rs = await callBPS(action, data)
+		var rs = await callPostAPI(action, data)
 		// if (rs.EC) {
 		// 	rs.EM = await ErrDefs.findErr(rs.EC, rs.EM);
 		// }
 		
 		return res.send(rs);
 	},
-	get:function(req,res){
-		return res.send({data:'a'});
+	getRequest:function(req,res){
+
+		var {action,access_token} = req.body;
+		sails.log.info("FrontController.getRequest start",action,access_token);
+
+		var rs = await callPostAPI(action, data)
+		// if (rs.EC) {
+		return res.send(rs);
 	}
 };
 
