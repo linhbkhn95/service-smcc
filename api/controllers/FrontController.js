@@ -71,7 +71,7 @@ module.exports = {
 		var {action,access_token} = req.body;
 		sails.log.info("FrontController.getRequest start",action,access_token);
 
-		var rs = await callPostAPI(action, data)
+		var rs = await callPostAPI(action, access_token)
 		// if (rs.EC) {
 		return res.send(rs);
 	}
