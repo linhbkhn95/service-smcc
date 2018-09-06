@@ -66,7 +66,7 @@ module.exports = {
 		
 		return res.send(rs);
 	},
-	getRequest:function(req,res){
+	getRequest: async function(req,res){
 
 		var {action,access_token} = req.body;
 		sails.log.info("FrontController.getRequest start",action,access_token);
