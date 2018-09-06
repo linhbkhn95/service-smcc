@@ -43,13 +43,14 @@ module.exports = {
 	postRequest: async function (req, res) {
 		var body = req.body;
 		var {action,data} = req.body;
+		console.log('postRequest',req.body)
+
 		var rs = await callBPS(action, data)
 		// if (rs.EC) {
 		// 	rs.EM = await ErrDefs.findErr(rs.EC, rs.EM);
 		// }
 		
-		console.log('postRequest',res)
-		return res.send(req.body);
+		return res.send(rs);
 	},
 	get:function(req,res){
 		return res.send({data:'a'});
