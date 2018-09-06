@@ -57,7 +57,7 @@ module.exports = {
 	postRequest: async function (req, res) {
 		var body = req.body;
 		var {action,data} = req.body;
-		sails.log.info("FrontController.postRequest start",re.body);
+		sails.log.info("FrontController.postRequest start",req.body);
 
 		var rs = await callPostAPI(action, data)
 		// if (rs.EC) {
