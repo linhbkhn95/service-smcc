@@ -137,6 +137,7 @@ module.exports = {
 				request({
 					url: url,
 					method: 'POST',
+					headers,
 					// gzip: !(sails.config.DISABLE_GZIP_BPS || false),
 					// timeout: sails.config.TIMEOUT_BPS || (5 * 60 * 1000),
 					json: body
