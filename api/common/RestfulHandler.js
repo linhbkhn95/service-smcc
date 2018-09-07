@@ -172,6 +172,8 @@ module.exports = {
 					url: url,
 					method:'GET',
 					headers:{
+						'Content-Type': 'application/json',
+
 						'Authorization':'Bearer '+ access_token
 					}
 					
