@@ -170,7 +170,10 @@ module.exports = {
 				};
 				request({
 					url: url,
-					headers,
+					method:'GET',
+					headers:{
+						'Authorization':'Bearer '+ access_token
+					}
 					
 				}, function (err, res) {
 					if (err) {
