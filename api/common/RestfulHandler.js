@@ -169,23 +169,23 @@ module.exports = {
 				var headers = {
 					'Authorization':'Bearer '+ access_token
 				};
-				request.get(url, {
-					'auth': {
-					  'bearer': access_token
-					}
-				  },function (err, res) {
-				// request({
-				// 	url: url,
-				// 	method:'GET',
-				// 	headers:{
-
-				// 		'Content-Type': 'application/json',
-				// 		'Accept':'application/json',
-
-				// 		'Authorization':'*Bearer* '+ access_token
+				// request.get(url, {
+				// 	'auth': {
+				// 	  'bearer': access_token
 				// 	}
+				//   },function (err, res) {
+				request({
+					url,
+					method:'GET',
+					headers:{
+
+						'Content-Type': 'application/json',
+						'Accept':'application/json',
+
+						'Authorization':'*Bearer* '+ access_token
+					}
 					
-				// }, function (err, res) {
+				}, function (err, res) {
 					if (err) {
 						sails.log.error(LogHelper.Add(infoLog, 'error'), err);
 						reject(err)
