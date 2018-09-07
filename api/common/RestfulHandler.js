@@ -177,7 +177,7 @@ module.exports = {
 						'Content-Type': 'application/json',
 						'Accept':'application/json',
 
-						'Authorization':'Bearer '+ access_token
+						'Authorization':'*Bearer* '+ access_token
 					}
 					
 				}, function (err, res) {
