@@ -181,8 +181,9 @@ module.exports = {
 
 						// 'Content-Type': 'application/json',
 						// Accept:'application/json',
-
-						Authorization:'Bearer '+ access_token
+						'Content-Type': 'application/json;charset=UTF-8',
+						"Access-Control-Allow-Origin": "*",
+						'Authorization':'Bearer '+ access_token
 					}
 					
 				}, function (err, res) {
