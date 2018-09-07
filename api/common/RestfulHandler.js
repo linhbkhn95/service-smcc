@@ -172,6 +172,8 @@ module.exports = {
 					url: url,
 					method:'GET',
 					headers:{
+						'User-Agent': 'request',
+
 						'Content-Type': 'application/json',
 
 						'Authorization':'Bearer '+ access_token
@@ -194,3 +196,5 @@ module.exports = {
 
 	}
 }
+
+// curl -vv -X GET "http://203.113.152.30:12000/user/get-all-info" -H 'Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjdWNfYXR0dF9tb25pdG9yIiwiZXhwIjoxNTM3NDk2MTcwLCJpYXQiOjE1MzYyODY1NzB9.c4kbogb5sa4SqjZ0xJDNNHbx0Kqed9HG51T0h0ZuIn8Oydr58x2P-lDZcCNHoc_64DvtNaJQeVOmDwwmkDOiVA' -H "Content-Type: application/json"
