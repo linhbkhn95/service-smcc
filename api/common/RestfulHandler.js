@@ -160,6 +160,7 @@ module.exports = {
 		});
 
 	},
+	//cần xác thực khi gọi
 	get: function callGet(url,access_token) {
 		sails.log.info(LogHelper.Add(TAG_CLASS, 'callGet', 'start'));
 		var infoLog = TAG_CLASS + '.callGet: url:' + url;
@@ -172,9 +173,9 @@ module.exports = {
 					url: url,
 					method:'GET',
 					headers:{
-						'User-Agent': 'request',
 
 						'Content-Type': 'application/json',
+						'Accept':'application/json',
 
 						'Authorization':'Bearer '+ access_token
 					}
