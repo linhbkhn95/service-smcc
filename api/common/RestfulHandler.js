@@ -171,7 +171,7 @@ module.exports = {
 				};
 				request.get(url, {
 					'auth': {
-					  'bearer ': access_token
+					  'bearer': access_token
 					}
 				  },function (err, res) {
 				// request({
