@@ -166,8 +166,11 @@ module.exports = {
 		var infoLog = TAG_CLASS + '.callGet: url:' + url;
 		return new Promise(function (resolve, reject) {
 			try {
+
+				auth = "Bearer " + access_token;
+
 				var headers = {
-					'Authorization':'Bearer '+ access_token
+					"Authorization":auth
 				};
 				// request.get(url, {
 				// 	'auth': {
@@ -181,9 +184,9 @@ module.exports = {
 
 						// 'Content-Type': 'application/json',
 						// Accept:'application/json',
-						'Content-Type': 'application/json;charset=UTF-8',
-						"Access-Control-Allow-Origin": "*",
-						'Authorization':'Bearer '+ access_token
+						"Content-Type": "application/json;charset=UTF-8",
+						// "Access-Control-Allow-Origin": "*",
+						headers
 					}
 					
 				}, function (err, res) {
