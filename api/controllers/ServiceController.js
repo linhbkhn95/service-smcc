@@ -75,15 +75,16 @@ module.exports = {
 		// if (rs.EC) {
 		return res.send(rs);
 	},
-	test: async function(req,res){
+// 	test: async function(req,res){
 
 		
 		
-		sails.log.info("FrontController.getRequest start",'',"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjdWNfYXR0dF9tb25pdG9yIiwiZXhwIjoxNTM3NTEyNzkzLCJpYXQiOjE1MzYzMDMxOTN9.HCnYq38nxvV8h6quDxJHaogf-osncwDUwdhoRzVTGf1k0cvQD4KZBlzIHbDNsRlU5nQOmERkb6aTWcTjt-5s-A");
-		let access_token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjdWNfYXR0dF9tb25pdG9yIiwiZXhwIjoxNTM3NTEyNzkzLCJpYXQiOjE1MzYzMDMxOTN9.HCnYq38nxvV8h6quDxJHaogf-osncwDUwdhoRzVTGf1k0cvQD4KZBlzIHbDNsRlU5nQOmERkb6aTWcTjt-5s-A"
-		var rs = await callPostAPI(action, access_token)
-		// if (rs.EC) {
-		return res.send(rs);
-	}
-};
+// 		sails.log.info("FrontController.getRequest start",'',"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjdWNfYXR0dF9tb25pdG9yIiwiZXhwIjoxNTM3NTEyNzkzLCJpYXQiOjE1MzYzMDMxOTN9.HCnYq38nxvV8h6quDxJHaogf-osncwDUwdhoRzVTGf1k0cvQD4KZBlzIHbDNsRlU5nQOmERkb6aTWcTjt-5s-A");
+// 		let access_token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjdWNfYXR0dF9tb25pdG9yIiwiZXhwIjoxNTM3NTEyNzkzLCJpYXQiOjE1MzYzMDMxOTN9.HCnYq38nxvV8h6quDxJHaogf-osncwDUwdhoRzVTGf1k0cvQD4KZBlzIHbDNsRlU5nQOmERkb6aTWcTjt-5s-A"
+// 		var rs = await callGetAPI('action', access_token)
+// 		// if (rs.EC) {
+// 		return res.send(rs);
+// 	}
+// };
+   }
 

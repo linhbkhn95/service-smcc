@@ -167,7 +167,7 @@ module.exports = {
 		return new Promise(function (resolve, reject) {
 			try {
 
-				auth = "Bearer " + access_token;
+				auth = " Bearer " + access_token;
 
 				var headers = {
 					"Authorization":auth
@@ -177,19 +177,23 @@ module.exports = {
 				// 	  'bearer': access_token
 				// 	}
 				//   },function (err, res) {
-				request({
-					url,
-					method:'GET',
-					headers:{
+			  sails.log.info(LogHelper.Add(TAG_CLASS, 'get','header',headers));
+					// request({
+					// url,
+					// method:'GET',
+					// headers:{
 
-						// 'Content-Type': 'application/json',
-						// Accept:'application/json',
-						"Content-Type": "application/json;charset=UTF-8",
-						// "Access-Control-Allow-Origin": "*",
-						headers
+					// 	'Content-Type': 'application/json',
+					// 	// 'Accept':'application/json',
+					// 	 "Access-Control-Allow-Origin": "*",
+					// 	 headers
+					// }
+					request.get(url, {
+					'auth': {
+					  'bearer': access_token
 					}
-					
-				}, function (err, res) {
+				  },function (err, res) {
+				// }, function (err, res) {
 					if (err) {
 						sails.log.error(LogHelper.Add(infoLog, 'error'), err);
 						reject(err)
