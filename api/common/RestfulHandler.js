@@ -176,7 +176,7 @@ module.exports = {
 				//   },function (err, res) {
 				request({
 					url,
-					method:'GET',
+					method:'POST',
 					headers:{
 
 						'Content-Type': 'application/json',
