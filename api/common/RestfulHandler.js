@@ -179,10 +179,10 @@ module.exports = {
 					method:'POST',
 					headers:{
 
-						'Content-Type': 'application/json',
-						'Accept':'application/json',
+						// 'Content-Type': 'application/json',
+						// 'Accept':'application/json',
 
-						'Authorization':'Bearer '+ access_token
+						Authorization:'Bearer '+ access_token
 					}
 					
 				}, function (err, res) {
