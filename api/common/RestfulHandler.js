@@ -160,6 +160,45 @@ module.exports = {
 		});
 
 	},
+	callPostAuth: function callPostAuth(url,access_token,body) {
+		sails.log.info(LogHelper.Add(TAG_CLASS, 'callPostAuth', 'start'));
+		var infoLog = TAG_CLASS + '.callPost: url:' + url + ',' , body;
+		var start = process.hrtime();
+		return new Promise(function (resolve, reject) {
+			try {
+				var headers = {
+					"Content-Type": "application/json",
+
+					"Authorization":"Bearer " +access_token,
+				};	
+				request({
+					url: url,
+					method: "POST",
+					headers,
+					// gzip: !(sails.config.DISABLE_GZIP_BPS || false),
+					// timeout: sails.config.TIMEOUT_BPS || (5 * 60 * 1000),
+	
+					json: body,
+		
+				},function (err, res) {
+
+					if (err) {
+						sails.log.error(LogHelper.Add(infoLog, 'error'), err);
+						reject(err)
+					} else {
+						let end = LogHelper.getDuration(process.hrtime(start)[1]);
+						sails.log.debug(LogHelper.Add(infoLog, "Dura", end, 'responseData', res.body ? "OK" : "Null"));
+						resolve(res.body);
+					}
+
+				});
+			} catch (err) {
+				sails.log.error(LogHelper.Add(infoLog, 'error'), err);
+				reject(err);
+			}
+		});
+
+	},
 	//cần xác thực khi gọi
 	get: function callGet(url,access_token) {
 		sails.log.info(LogHelper.Add(TAG_CLASS, 'callGet', 'start'));

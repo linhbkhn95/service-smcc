@@ -51,7 +51,21 @@ async function callGetAPI (action,access_token) {
 		return Ioutput.jsonAPIOutput(-101338, 'He thong tam thoi gian doan', err);
 	}
 }
+ async function callPostAuth (action,access_token,data) {
+	try {
+		sails.log.info("FrontController.callPostAuth start111111111111",action,access_token,data);
+		var result = await Restfulhandler.callPostAuth(sails.config.bpsUrl + action, access_token,data);
+		if (typeof result === 'error') {
+			sails.log.error(LogHelper.Add('error'), result);
+			return Ioutput.jsonAPIOutput(-1, 'He thong tam thoi gian doan', result);
+		}
+		return result;
 
+	} catch (err) {
+		sails.log.error(LogHelper.Add('error'), err);
+		return Ioutput.jsonAPIOutput(-101338, 'He thong tam thoi gian doan', err);
+	}
+}
 
 module.exports = {
 	postRequest: async function (req, res) {
@@ -66,6 +80,18 @@ module.exports = {
 		
 		return res.send(rs);
 	},
+	postRequestAuth: async function (req, res) {
+		var body = req.body;
+		var {action,data,access_token} = req.body;
+		sails.log.info("FrontController.postRequest startaaaaaaaaaaaaa",data);
+		var rs = await callPostAuth(action,access_token,data)
+		// if (rs.EC) {
+		// 	rs.EM = await ErrDefs.findErr(rs.EC, rs.EM);
+		// }
+		
+		return res.send(rs);
+	},
+	
 	getRequest: async function(req,res){
 
 		var {action,access_token} = req.body;
@@ -75,6 +101,7 @@ module.exports = {
 		// if (rs.EC) {
 		return res.send(rs);
 	},
+
 	test: async function(req,res){
 
 		
