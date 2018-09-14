@@ -69,7 +69,8 @@ async function callGetAPI (action,access_token) {
 
 module.exports = {
 	postRequest: async function (req, res) {
-		var body = req.body;
+		try {
+			var body = req.body;
 		var {action,data} = req.body;
 		sails.log.info("FrontController.postRequest start",req.body);
 
@@ -79,27 +80,42 @@ module.exports = {
 		// }
 		
 		return res.send(rs);
+		} catch (err) {
+			return Ioutput.jsonAPIOutput(-101338, 'He thong tam thoi gian doan', err);
+		}
+		
 	},
 	postRequestAuth: async function (req, res) {
-		var body = req.body;
-		var {action,data,access_token} = req.body;
-		sails.log.info("FrontController.postRequest startaaaaaaaaaaaaa",data);
-		var rs = await callPostAuth(action,access_token,data)
-		// if (rs.EC) {
-		// 	rs.EM = await ErrDefs.findErr(rs.EC, rs.EM);
-		// }
-		
-		return res.send(rs);
+		try {
+			var body = req.body;
+			var {action,data,access_token} = req.body;
+			sails.log.info("FrontController.postRequest startaaaaaaaaaaaaa",data);
+			var rs = await callPostAuth(action,access_token,data)
+			// if (rs.EC) {
+			// 	rs.EM = await ErrDefs.findErr(rs.EC, rs.EM);
+			// }
+			
+			return res.send(rs);
+		} catch (err) {
+			return Ioutput.jsonAPIOutput(-101338, 'He thong tam thoi gian doan', err);
+
+		}
+	
 	},
 	
 	getRequest: async function(req,res){
+		try {
+			var {action,access_token} = req.body;
+			sails.log.info("FrontController.getRequest start",action,access_token);
+	
+			var rs = await callGetAPI(action, access_token)
+			// if (rs.EC) {
+			return res.send(rs);
+		} catch (err) {
+			return Ioutput.jsonAPIOutput(-101338, 'He thong tam thoi gian doan', err);
 
-		var {action,access_token} = req.body;
-		sails.log.info("FrontController.getRequest start",action,access_token);
-
-		var rs = await callGetAPI(action, access_token)
-		// if (rs.EC) {
-		return res.send(rs);
+		}
+	
 	},
 
 	test: async function(req,res){
