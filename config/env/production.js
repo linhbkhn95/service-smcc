@@ -34,7 +34,7 @@ module.exports = {
   // log: {
   //   level: "verbose"
   // },
-  bpsUrl: 'http://203.113.152.30:12000/', //link BPSService
+  bpsUrl: 'http://203.113.152.30:12000', //link BPSService
   // connections:{
   //   redispersistent: {
   //     host:'fundweb',
